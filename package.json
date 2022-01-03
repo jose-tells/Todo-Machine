@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --config webpack.config.js",
     "start": "webpack serve",
-    "test": "jest",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "test": "jest"
   },
   "keywords": [],
   "author": "Jose Marquinez <josemarquinez28gmail.com>",
@@ -25,10 +23,10 @@
     "@babel/preset-react": "^7.16.5",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "dotenv": "^10.0.0",
     "html-loader": "^3.0.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
     "webpack-dev-server": "^4.7.1"
-  },
-  "homepage": "https://jose-tells.github.io/Todo-Machine"
+  }
 }
