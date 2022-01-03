@@ -6,7 +6,6 @@ import { TodoProvider } from './TodoContext';
 // import './assets/styles/App.css';
 
 const App = () => {
-
   return (
     <TodoProvider>
       <AppUI />
