@@ -53,8 +53,8 @@ const App = () => {
       </TodoHeader>
 
 
-      <LoadingSkeleton />
-      {/* <TodoList
+      {/* <LoadingSkeleton /> */}
+      <TodoList
         error={error}
         loading={loading}
         totalTodos={totalTodos}
@@ -85,7 +85,7 @@ const App = () => {
             onDelete={() => onDelete(todo.text)}
           />
         )}
-      </TodoList> */}
+      </TodoList>
 
       {openModal && (
         <Modal>
