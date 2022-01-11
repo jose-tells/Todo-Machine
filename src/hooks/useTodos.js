@@ -1,12 +1,9 @@
 import React from 'react';
 // Hooks
-import { useFilterTodos } from '../hooks/useFilterTodos';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useFilterTodos } from './useFilterTodos';
+import { useLocalStorage } from './useLocalStorage';
 
-
-const TodoContext = React.createContext();
-
-function TodoProvider(props) {
+function useTodos() {
   const [openModal, setOpenModal] = React.useState(false);
 
   const {
@@ -14,6 +11,7 @@ function TodoProvider(props) {
     saveItem: saveTodos,
     loading,
     error,
+    synchronizeItem: synchronizeTodos,
   } = useLocalStorage('TODOS_V1', [])
 
   const {
@@ -25,6 +23,8 @@ function TodoProvider(props) {
   const handleChange = (event) => {
     setSearchValue(event.target.value)
   };
+
+  const totalTodos = todos.length;
 
   const completedTodos = todos.filter((todo) => todo.completed);
 
@@ -51,23 +51,21 @@ function TodoProvider(props) {
     saveTodos(newTodos);
   };
 
-  return (
-    <TodoContext.Provider value={{
-      loading,
-      error,
-      searchValue,
-      searchedTodos,
-      handleChange,
-      completedTodos,
-      onAdd,
-      onComplete,
-      onDelete,
-      openModal,
-      setOpenModal,
-    }}>
-      {props.children}
-    </TodoContext.Provider>
-  )
-};
+  return {
+    loading,
+    error,
+    searchValue,
+    totalTodos,
+    searchedTodos,
+    handleChange,
+    completedTodos,
+    onAdd,
+    onComplete,
+    onDelete,
+    openModal,
+    setOpenModal,
+    synchronizeTodos,
+  };
+}
 
-export { TodoProvider, TodoContext };
+export { useTodos };

@@ -19,6 +19,10 @@
   font-weight: 400;
 }
 
+.TodoSearch:disabled {
+  opacity: .25;
+}
+
 .TodoSearch:focus {
   outline-color: #61DAFA;
 }

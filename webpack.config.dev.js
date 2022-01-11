@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
-  mode: 'production',
+  mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'assets/bundle.js',
@@ -35,6 +35,11 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    static: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3001,
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css'
@@ -45,3 +50,4 @@ module.exports = {
     })
   ]
 }
+
